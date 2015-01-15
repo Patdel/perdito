@@ -30,7 +30,7 @@ module Perdito
     end
 
     get('/stories/:id') do
-      @mumble = mumble(params[:id])
+
       render(:erb, :show, :layout => :default)
     end
 
@@ -51,8 +51,22 @@ module Perdito
         # all information is here!
         # so, create a new story in the database
         # and go to that story's page
-        binding.pry
+        id = $redis.incr("story_id")
+
+           $redis.hmset(
+           "story:#{id}",
+           'corner',      params['corner'],
+           'location',    params['location'],
+           'picture',     params['picture'],
+           'description', params['description'],
+           'links',       params['links']
+        )
+        $redis.lpush("story_ids", id)
+        redirect to("/stories/#{id}")
+
       end
+
+
     end
 
 
