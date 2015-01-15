@@ -1,28 +1,29 @@
+<% if @error_message %>
+  <span class="error"><%= @error_message %></span>
+<% end %>
 
 <div>
   <form method='POST' action='/stories'>
+    <label>Name your corner
+        <input type="text" name="corner" >
+    </label>
 
-  <label>Name your corner
-      <input name="text" >
-  </label>
+    <label>Tell us where it is
+        <input type="text" name="location" size="50">
+    </label>
 
-  <label>Tell us where it is
-      <input type="url" name="location" size="50">
-  </label>
+    <label>Add Picture
+        <input type="url" name="picture" size="50">
+    </label>
 
-  <label>Add Picture
-      <input type="url" name="picture" size="50">
-  </label>
+    <label>What can be said about this place?
+        <textarea name="description" cols="50" rows="8"></textarea>
+    </label>
 
-  <label>What can be said about this place?
-      <textarea name="description" cols="50" rows="8"></textarea>
-  </label>
+    <label>Links
+        <input type="url" name="links">
+    </label>
 
-  <label>
-      <input type="url" name="links">
-  </label>
-
-
-
+    <input type="submit"/>
   </form>
 </div>

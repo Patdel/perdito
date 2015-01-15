@@ -2,6 +2,7 @@ module Perdito
   class Server < Sinatra::Base
 
     enable :logging
+    enable :sessions
 
     configure :development do
       register Sinatra::Reloader
@@ -20,6 +21,11 @@ module Perdito
     end
 
     get('/stories/new') do
+      # binding.pry
+      puts session.to_hash
+      if session[:error_message]
+        @error_message = session.delete(:error_message)
+      end
       render(:erb, :new, :layout => :default)
     end
 
@@ -29,8 +35,23 @@ module Perdito
     end
 
     post('/stories') do
-      if params['text'] == '' || params['author_email'] == ''
-        redirect to('/mumbles/new')
+      # check for empty values
+      if params['corner']      == '' ||
+         params['location']    == '' ||
+         params['picture']     == '' ||
+         params['description'] == '' ||
+         params['links']       == ''
+        # there was an empty value, so failed
+        # put an error message in the session
+        # and go back to the form
+        session[:error_message] = "Fill in all the fields!"
+        puts "ERROR"
+        redirect to('/stories/new')
+      else
+        # all information is here!
+        # so, create a new story in the database
+        # and go to that story's page
+        binding.pry
       end
     end
 
