@@ -1,2 +1,19 @@
 
-<h1>Choosing any silent corner of this city that comes alive to you, sharing it and getting others to make it more magical and everlasting</h1>
+
+
+<div class="click">
+   <h3><a href="/stories/new">Start a story by clicking here</a></h3>
+</div>
+
+<div class="each">
+
+   <% @stories.each do |story| %>
+  <h3><%= story['corner'] %></h3>
+  <p><img src="<%= story['picture'] %>" class="photo"></p>
+  <h3 class="describing"><%= story['description'] %></h3>
+
+  <% end %>
+
+</div>
+
+

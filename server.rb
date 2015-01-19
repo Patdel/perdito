@@ -11,13 +11,16 @@ module Perdito
 
 
     get('/') do
-      #redirect to('/stories')
-      render(:erb, :index, :layout => :default)
+      redirect to('/stories')
+
     end
 
     get('/stories') do
-      #@mumbles = mumbles.sort_by {|mumble| mumble["date"]}
-
+      list = $redis.lrange("story_ids", 0, -1)
+      @stories = list.map do |id|
+        $redis.hgetall("story:#{id}")
+      end
+      render(:erb, :index, :layout => :default)
     end
 
     get('/stories/new') do
@@ -30,7 +33,12 @@ module Perdito
     end
 
     get('/stories/:id') do
-
+      #binding.pry
+      id = params[:id]
+      #story_ids = $redis.lrange("story_ids", 0, -1)
+      @story =  $redis.hgetall("story:#{id}")
+      #render(:erb, :sketches)
+      #@story = "story:#{id}"
       render(:erb, :show, :layout => :default)
     end
 
