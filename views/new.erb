@@ -2,35 +2,42 @@
   <span class="error"><%= @error_message %></span>
 <% end %>
 
-<div>
-  <form method='POST' action='/stories'>
 
-    <div class="corner">
-        <label>Name your corner
-        <input type="text" name="corner" cols="200" >
-    </label>
+<body>
+    <div class="form">
+      <form method='POST' action='/stories'>
+
+
+        <div class="corner">
+            <div><label>Name your corner</label></div>
+                <input type="text" name="corner" size="70" >
+            </div>
+        </div>
+
+        <div class="location">
+            <div><label>Tell us where it is</label></div>
+                <input type="text" name="location" size="70">
+
+        </div>
+
+        <div class="picture">
+            <div><label>Add Picture</label></div>
+                <input type="url" name="picture" size="70">
+
+        </div>
+
+        <div class="info">
+              <div><label>What can we learn about this place?</label></div>
+              <textarea name="description" cols="70" rows="8"></textarea>
+        </div>
+
+        <div>
+            <label class="link">Links
+            </label>
+                <input type="url" name="links" size="70">
+        </div>
+
+        <input type="submit"/>
+      </form>
     </div>
-
-
-    <label>Tell us where it is
-        <input type="text" name="location" size="50">
-    </label>
-
-    <label>Add Picture
-        <input type="url" name="picture" size="50">
-    </label>
-
-    <div class="description">
-      <label class="corner">What can be said about this place?
-      </label>
-        <textarea name="description" cols="50" rows="8"></textarea>
-    </div>
-
-
-    <label class="link">Links
-    </label>
-        <input type="url" name="links">
-
-    <input type="submit"/>
-  </form>
-</div>
+</body>

@@ -68,8 +68,25 @@ a {
   text-align: top;
 }
 
+.new {
+  margin: 10px;
+  padding-bottom: 10px;
+  width: 260px;
+}
+
+.form {
+  margin: 0px auto;
+}
+
+.title {
+  float: left;
+  width: 200px;
+  text-align: right;
+  padding-right: 10px;
+}
+
 .corner {
-   display: block;
+   margin-bottom: 15px;
 
 }
 
@@ -77,13 +94,18 @@ a {
   display: block;
 }
 
-.description {
-  margin-top: 25px;
+.picture {
+  margin-bottom: 15px;
 }
 
-.corner {
-  display: block;
+.info {
+  height: 140px;
 }
+
+.location {
+  margin-bottom: 15px;
+}
+
 
 .error {
   color: red;
